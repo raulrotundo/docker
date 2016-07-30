@@ -56,14 +56,14 @@ docker-compose up  nginx mysql redis
 **A)** If you already have a Laravel project, clone this repository on your `Laravel` root direcotry:
 
 ```bash
-git submodule add https://github.com/LaraDock/laradock.git
+git submodule add https://github.com/raulrotundo/docker.git
 ```
 >If you are not already using Git for your Laravel project, you can use `git clone` instead of `git submodule`.
 
 **B)** If you don't have a Laravel project, and you want to install Laravel from Docker, clone this repo anywhere on your machine:
 
 ```bash
-git clone https://github.com/LaraDock/laradock.git
+git clone https://github.com/raulrotundo/docker.git
 ```
 
 ## Usage
@@ -259,8 +259,6 @@ For more about the Laravel installation click [here](https://laravel.com/docs/ma
 
 3 - Edit `docker-compose.yml` to Map the new application path:
 
-By default LaraDock assumes the Laravel application is living in the parent directory of the laradock folder. 
-
 Since the new Laravel application is in the `my-cool-app` folder, we need to replace `../:/var/www/laravel` with `../my-cool-app/:/var/www/laravel`, as follow:
 
 ```yaml
@@ -356,7 +354,7 @@ composer require predis/predis:^1.0
 5 - You can manually test it from Laravel with this code:
 
 ```php
-\Cache::store('redis')->put('LaraDock', 'Awesome', 10);
+\Cache::store('redis')->put('docker', 'Awesome', 10);
 ```
 
 
@@ -412,7 +410,7 @@ More details about this [here](https://github.com/jenssegers/laravel-mongodb#ins
 5 - Test it:
 
 - First let your Models extend from the Mongo Eloquent Model. Check the [documentation](https://github.com/jenssegers/laravel-mongodb#eloquent).
-- Enter the Workspace Continer `docker exec -it laradock_workspace_1 bash`.
+- Enter the Workspace Continer `docker exec -it docker_workspace_1 bash`.
 - Migrate the Database `php artisan migrate`.
 
 
