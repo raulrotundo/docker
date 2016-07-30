@@ -1,64 +1,6 @@
-# LaraDock
-
-[![forthebadge](http://forthebadge.com/images/badges/built-by-developers.svg)](http://zalt.me)
-
-
-LaraDock helps you run your **Laravel** App on **Docker** real quick.
-<br>
-It's like Laravel Homestead but for Docker instead of Vagrant.
-
-
-![](http://s18.postimg.org/fhykchl09/new_laradock_cover.png)
-
-<br>
-## Contents
-
-
-- [Intro](#Intro)
-	- [Features](#features)
-	- [Supported Containers](#Supported-Containers)
-	- [What is Docker](#what-is-docker)
-	- [What is Laravel](#what-is-laravel)
-	- [Why Docker not Vagrant](#why-docker-not-vagrant)
-	- [LaraDock VS Homestead](#laradock-vs-homestead)
-- [Demo Video](#Demo)
-- [Requirements](#Requirements)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Documentation](#Documentation)
-	- [Docker](#Docker)
-		- [List current running Containers](#List-current-running-Containers)
-		- [Close all running Containers](#Close-all-running-Containers)
-		- [Delete all existing Containers](#Delete-all-existing-Containers)
-		- [Enter a Container (SSH into a running Container)](#Enter-Container)
-		- [Edit default container configuration](#Edit-Container)
-		- [Edit a Docker Image](#Edit-a-Docker-Image)
-		- [Build/Re-build Containers](#Build-Re-build-Containers)
-		- [Add more Software's (Docker Images)](#Add-Docker-Images)
-		- [View the Log files](#View-the-Log-files)
-	- [Laravel](#Laravel):
-		- [Install Laravel from a Docker Container](#Install-Laravel)
-		- [Run Artisan Commands](#Run-Artisan-Commands)
-		- [Use Redis](#Use-Redis)
-		- [Use Mongo](#Use-Mongo)
-	- [PHP](#PHP)
-		- [Install PHP Extensions](#Install-PHP-Extensions)
-		- [Change the PHP-FPM Version](#Change-the-PHP-FPM-Version)
-		- [Change the PHP-CLI Version](#Change-the-PHP-CLI-Version)
-	- [Misc](#Misc)
-		- [Run a Docker Virtual Host](#Run-Docker-Virtual-Host)
-		- [Find your Docker IP Address](#Find-Docker-IP-Address)
-		- [Use custom Domain](#Use-custom-Domain)
-		- [Debugging](#debugging)
-- [Help & Questions](#Help)
-
-
-
-<a name="Intro"></a>
 ## Intro
 
-LaraDock strives to make the development experience easier.
-It contains pre-packaged Docker Images that provides you a wonderful development environment without requiring you to install PHP, NGINX, MySQL, REDIS, and any other software on your local machine.
+This docker contains pre-packaged Docker Images that provides you a wonderful development environment without requiring you to install PHP, NGINX, MySQL, REDIS, and any other software on your local machine.
 
 
 **Usage Overview:** Run `NGINX`, `MySQL` and `Redis`.
@@ -66,8 +8,6 @@ It contains pre-packaged Docker Images that provides you a wonderful development
 ```shell
 docker-compose up  nginx mysql redis
 ```
-
-<a name="features"></a>
 ### Features
 
 - Easy switch between PHP versions: 7.0 - 5.6 - 5.5 ...
@@ -83,8 +23,6 @@ docker-compose up  nginx mysql redis
 - Latest version of the Docker Compose file (`docker-compose`).
 - Everything is visible and editable.
 
-
-<a name="Supported-Containers"></a>
 ### Supported Containers
 
 - PHP-FPM (7.0 - 5.6 - 5.5)
@@ -102,51 +40,6 @@ docker-compose up  nginx mysql redis
 - Data *(Databases Data Container)*
 - Application *(Application Code Container)*
 
-
->If you can't find your container, build it yourself and add it to this list. Contributions are welcomed :)
-
-
-
-
-
-<a name="what-is-docker"></a>
-### What is Docker?
-
-[Docker](https://www.docker.com)  is an open-source project that automates the deployment of applications inside software containers, by providing an additional layer of abstraction and automation of [operating-system-level virtualization](https://en.wikipedia.org/wiki/Operating-system-level_virtualization) on Linux, Mac OS and Windows.
-
-<a name="what-is-laravel"></a>
-### What is Laravel?
-
-Seriously!!!
-
-
-<a name="why-docker-not-vagrant"></a>
-### Why Docker not Vagrant!?
-
-[Vagrant](https://www.vagrantup.com) creates Virtual Machines in minutes while Docker creates Virtual Containers in seconds.
-
-Instead of providing a full Virtual Machines, like you get with Vagrant, Docker provides you **lightweight** Virtual Containers, that share the same kernel and allow to safely execute independent processes.
-
-In addition to the speed, Docker gives tens of features that cannot be achieved with Vagrant.
-
-Most importantly Docker can run on Development and on Production (same environment everywhere). While Vagrant is designed for Development only, (so you have to re-provision your server on Production every time).
-
-
-<a name="laradock-vs-homestead"></a>
-### LaraDock VS Homestead
-
-LaraDock and [Homestead](https://laravel.com/docs/master/homestead) both gives you a complete virtual development environments. (Without the need to install and configure every single software on your own Operating System).
-
-- Homestead is a tool that controls Vagrant for you (using Homestead special commands). And Vagrant manages your Virtual Machine.
-
-- LaraDock is a tool that controls Docker for you (using Docker Compose official commands). And Docker manages you Virtual Containers.
-
-Running a virtual Container is much faster than running a full virtual Machine. 
-<br>Thus **LaraDock is much faster than Homestead**.
-
-
-
-<a name="Requirements"></a>
 ## Requirements
 
 | Linux                                                                                   | Windows & MAC                                           |
@@ -156,20 +49,9 @@ Running a virtual Container is much faster than running a full virtual Machine.
 | [Docker Engine](https://docs.docker.com/engine/installation/linux/ubuntulinux) |     [Docker Toolbox](https://www.docker.com/toolbox)    |
 |                [Docker Compose](https://docs.docker.com/compose/install)                |                                                         |
 
-
-
-
-
-<a name="Demo"></a>
-## Demo Video
-
-What's better than a [**Demo Video**](https://www.youtube.com/watch?v=-DamFMczwDA) :) 
-
-<a name="Installation"></a>
 ## Installation
 
-
-1 - Clone the `LaraDock` repository.
+1 - Clone the `Docker` repository.
 
 **A)** If you already have a Laravel project, clone this repository on your `Laravel` root direcotry:
 
@@ -184,21 +66,12 @@ git submodule add https://github.com/LaraDock/laradock.git
 git clone https://github.com/LaraDock/laradock.git
 ```
 
-
-
-<a name="Usage"></a>
 ## Usage
 
 
 1 - For **Windows & MAC** users only: If you are not using the native Docker-Engine `Beta`, make sure you have a running Docker Virtual Host on your machine. 
 [How to run a Docker Virtual Host?](#Run-Docker-Virtual-Host)
 (**Linux** users don't need a Virtual Host, so skip this step).
-
-
-<br>
-2 - Run some Containers: *(Make sure you are in the `laradock` folder before running the `docker-compose` commands).*
-
-
 
 **Example:** Running NGINX and MySQL:
 
@@ -212,9 +85,6 @@ You can select your own combination of container form this list:
 
 
 **Note**: `workspace`, `data`, `php-fpm` and `application` will run automatically in most of the cases.
-
-
-
 
 
 <br>
@@ -248,25 +118,6 @@ DB_HOST=xxx.xxx.xxx.xxx
 5 - Open your browser and visit your `{Docker-IP}` address (`http://xxx.xxx.xxx.xxx`).
 
 
-
-<br>
-**Debugging**: if you are facing any problem here check the [Debugging](#debugging) section.
-
-If you need a special support. Contact me, more details in the [Help & Questions](#Help) section.
-
-
-<br>
-<a name="Documentation"></a>
-## Documentation
-
-
-
-<a name="Docker"></a>
-### [Docker]
-
-
-
-<a name="List-current-running-Containers"></a>
 ### List current running Containers
 ```bash
 docker ps
@@ -278,11 +129,7 @@ docker-compose ps
 ```
 
 
-
-
-
 <br>
-<a name="Close-all-running-Containers"></a>
 ### Close all running Containers
 ```bash
 docker-compose stop
@@ -294,13 +141,7 @@ To stop single container do:
 docker-compose stop {container-name}
 ```
 
-
-
-
-
-
 <br>
-<a name="Delete-all-existing-Containers"></a>
 ### Delete all existing Containers
 ```bash
 docker-compose down
@@ -309,13 +150,7 @@ docker-compose down
 *Note: Careful with this command as it will delete your Data Volume Container as well. (if you want to keep your Database data than you should stop each container by itself as follow):* 
 
 
-
-
-
-
-
 <br>
-<a name="Enter-Container"></a>
 ### Enter a Container (SSH into a running Container)
 
 1 - first list the current running containers with `docker ps`
@@ -334,7 +169,6 @@ docker exec -it {container-name} bash
 
 
 <br>
-<a name="Edit-Container"></a>
 ### Edit default container configuration
 Open the `docker-compose.yml` and change anything you want.
 
@@ -355,14 +189,7 @@ Change Redis defaut port to 1111:
 ```
 
 
-
-
-
-
-
-
 <br>
-<a name="Edit-a-Docker-Image"></a>
 ### Edit a Docker Image
 
 1 - Find the `dockerfile` of the image you want to edit, 
@@ -381,15 +208,7 @@ docker-compose build mysql
 
 
 
-
-
-
-
-
-
-
 <br>
-<a name="Build-Re-build-Containers"></a>
 ### Build/Re-build Containers
 
 If you do any change to any `dockerfile` make sure you run this command, for the changes to take effect:
@@ -403,27 +222,14 @@ Optionally you can specify which container to rebuild (instead of rebuilding all
 docker-compose build {container-name}
 ```
 
-
-
-
-
-
 <br>
-<a name="Add-Docker-Images"></a>
 ### Add more Software's (Docker Images)
 
 To add an image (software), just edit the `docker-compose.yml` and add your container details, to do so you need to be familiar with the [docker compose file syntax](https://docs.docker.com/compose/compose-file/).
 
 
 
-
-
-
-
-
-
 <br>
-<a name="View-the-Log-files"></a>
 ### View the Log files 
 The Nginx Log file is stored in the `logs/nginx` directory.
 
@@ -434,17 +240,6 @@ docker logs {container-name}
 ```
 
 
-
-
-
-<br>
-<a name="Laravel"></a>
-### [Laravel]
-
-
-
-
-<a name="Install-Laravel"></a>
 ### Install Laravel from a Docker Container
 
 1 - First you need to enter the Workspace Container.
@@ -483,7 +278,6 @@ cd my-cool-app
 
 
 <br>
-<a name="Run-Artisan-Commands"></a>
 ### Run Artisan Commands
 
 You can run artisan commands and many other Terminal commands from the Workspace container.
@@ -518,15 +312,7 @@ Composer update
 phpunit
 ```
 
-
-
-
-
-
-
-
 <br>
-<a name="Use-Redis"></a>
 ### Use Redis
 
 1 - First make sure you run the Redis Container (`redis`) with the `docker-compose up` command.
@@ -578,7 +364,6 @@ composer require predis/predis:^1.0
 
 
 <br>
-<a name="Use-Mongo"></a>
 ### Use Mongo
 
 1 - First make sure you run the MongoDB Container (`mongo`) with the `docker-compose up` command.
@@ -636,15 +421,10 @@ More details about this [here](https://github.com/jenssegers/laravel-mongodb#ins
 
 
 <br>
-<a name="PHP"></a>
 ### [PHP]
 
 
 
-
-
-
-<a name="Install-PHP-Extensions"></a>
 ### Install PHP Extensions
 
 Before installing PHP extensions, you have to decide whether you need for the `FPM` or `CLI` because each lives on a different container, if you need it for both you have to edit both containers.
@@ -662,7 +442,6 @@ The PHP-CLI extensions should be installed in `workspace/Dockerfile`.
 
 
 <br>
-<a name="Change-the-PHP-FPM-Version"></a>
 ### Change the PHP-FPM Version
 By default **PHP-FPM 7.0** is running.
 
@@ -698,18 +477,8 @@ Supported Versions:
 docker-compose build php
 ```
 
-For more details about the PHP base image, visit the [official PHP docker images](https://hub.docker.com/_/php/).
-
-
-
-
-
-
-
-
 
 <br>
-<a name="Change-the-PHP-CLI-Version"></a>
 ### Change the PHP-CLI Version
 By default **PHP-CLI 7.0** is running.
 
@@ -720,24 +489,6 @@ The PHP-CLI is installed in the Workspace container. To change the PHP-CLI versi
 Right now you have to manually edit the `Dockerfile` or create a new one like it's done for the PHP-FPM. (consider contributing).
 
 
-
-
-
-
-
-
-
-
-
-<br>
-<a name="Misc"></a>
-### [Misc]
-
-
-
-
-
-<a name="Run-Docker-Virtual-Host"></a>
 ### Run a Docker Virtual Host
 
 These steps are only for **Windows & MAC** users *(Linux users don't need a virtual host)*:
@@ -761,13 +512,7 @@ eval $(docker-machine env)
 ```
 
 
-
-
-
-
-
 <br>
-<a name="Find-Docker-IP-Address"></a>
 ### Find your Docker IP Address 
 
 **On Windows & MAC:** 
@@ -799,7 +544,6 @@ ifconfig docker0 | grep 'inet' | cut -d: -f2 | awk '{ print $1}' | head -n1
 
 
 <br>
-<a name="Use-custom-Domain"></a>
 ### Use custom Domain (instead of the Docker IP)
 
 Assuming your custom domain is `laravel.dev` and your current `Docker-IP` is `xxx.xxx.xxx.xxx`.
@@ -830,7 +574,6 @@ server_name laravel.dev;
 
 
 <br>
-<a name="debugging"></a>
 ### Debugging
 
 *Here's a list of the common problems you might face, and the possible solutions.*
@@ -846,36 +589,3 @@ sudo chmod -R 777 storage bootstrap/cache
 #### + I see "Welcome to nginx" instead of the Laravel App!
 
 use `http://127.0.0.1` instead of `http://localhost` in your browser.
-
-
-
-
-
-
-
-
-
-<br>
-## Contributing
-
-This little project was built by one man who has a full time job and many responsibilities, so if you like this project and you find that it needs a bug fix or support for new software or upgrade any container, or anything else.. Do not hesitate to contribute, you are more than welcome :)
-
-
-<a name="Help"></a>
-## Help & Questions
-
-If you need any help with Docker and Laravel, you can schedule a live call with the creator of this project at [Codementor.io](https://www.codementor.io/mahmoudz), He would love to help.
-
-For general questions you can open [Issues](https://github.com/laradock/laradock/issues) here on Github (We will label them as questions).
-
-Additionally, you can contact Mahmoud Zalt (the creator of this project) via a direct message on LaraChat, (his username is `mahmoud_zalt`). Or send him an email (`mahmoud@zalt.me`).
-
-
-## Credits
-
-- [Mahmoud Zalt](https://github.com/Mahmoudz) (Twitter [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt))
-- [Awesome list of contributors](https://github.com/LaraDock/laradock/graphs/contributors)
-
-## License
-
-[MIT License](https://github.com/laradock/laradock/blob/master/LICENSE) (MIT)
