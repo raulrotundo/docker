@@ -1,3 +1,3 @@
 FROM elasticsearch:1.7
 
-COPY config ./config
+COPY config /etc/elasticsearch
