@@ -1,0 +1,161 @@
+version: '2'
+
+services:
+
+### Laravel Application Code Container ######################
+
+    application:
+        build: ./application
+        volumes:
+            - ~/workspace/feedter:/var/www/laravel
+
+### PHP-FPM Container #######################################
+
+    php-fpm:
+        build:
+            context: ../../../services/php-fpm
+            dockerfile: Dockerfile-56
+        volumes_from:
+            - application
+
+### Workspace Utilities Container ###########################
+
+    workspace:
+        build: ./workspace
+        volumes_from:
+            - application
+        tty: true            
+
+### Databases Data Container ################################
+
+    data:
+        build: ../../../services/data
+        volumes:
+            - /var/lib/postgres:/var/lib/postgres
+            - /var/lib/redis:/data
+            #- /var/lib/mysql:/var/lib/mysql            
+            #- /var/lib/mariadb:/var/lib/mariadb
+            #- /var/lib/memcached:/var/lib/memcached            
+            #- /var/lib/neo4j:/var/lib/neo4j/data
+            #- /var/lib/mongo:/data/db
+
+### Nginx Server Container ##################################
+
+    nginx:
+        #build: ../../../services/nginx
+        build:
+            context: ./nginx
+        volumes_from:
+            - application
+        volumes:
+            - ./logs/:/var/log/nginx
+        ports:
+            - "80:80"
+            - "443:443"
+
+### PostgreSQL Container ####################################
+
+    postgres:
+        build: ../../../services/postgres
+        volumes_from:
+            - data
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: homestead
+            POSTGRES_USER: homestead
+            POSTGRES_PASSWORD: secret
+
+### Redis Container #########################################
+
+    redis:
+        build: ../../../services/redis
+        volumes_from:
+            - data
+        ports:
+            - "6379:6379"
+
+### Elasticsearch Container #################################
+
+    elasticsearch:
+        build: ../../../services/elasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+
+# ### MySQL Container #########################################
+
+#     mysql:
+#         build: ../../../services/mysql
+#         volumes_from:
+#             - data
+#         ports:
+#             - "3306:3306"
+#         environment:
+#             MYSQL_DATABASE: homestead
+#             MYSQL_USER: homestead
+#             MYSQL_PASSWORD: secret
+#             MYSQL_ROOT_PASSWORD: root            
+
+# ### MariaDB Container #######################################
+
+#     mariadb:
+#         build: ../../../services/mariadb
+#         volumes_from:
+#             - data
+#         ports:
+#             - "3306:3306"
+#         environment:
+#             MYSQL_DATABASE: homestead
+#             MYSQL_USER: homestead
+#             MYSQL_PASSWORD: secret
+#             MYSQL_ROOT_PASSWORD: root
+
+# ### Neo4j Container #########################################
+
+#     neo4j:
+#         build: ../../../services/neo4j
+#         ports:
+#             - "7474:7474"
+#             - "1337:1337"
+#         environment:
+#             - NEO4J_AUTH=homestead:secret
+#         volumes_from:
+#             - data
+
+# ### MongoDB Container #######################################
+
+#     mongo:
+#         build: ../../../services/mongo
+#         ports:
+#             - "27017:27017"
+#         volumes_from:
+#             - data
+
+# ### Memcached Container #####################################
+
+#     memcached:
+#         build: ../../../services/memcached
+#         volumes_from:
+#             - data
+#         ports:
+#             - "11211:11211"
+
+
+# ### Beanstalkd Container ####################################
+
+#     beanstalkd:
+#         build: ../../../services/beanstalkd
+#         ports:
+#             - "11300:11300"
+#         privileged: true
+
+
+# ### Beanstalkd Console Container ############################
+
+#     beanstalkd-console:
+#         build: ../../../services/beanstalkd-console
+#         ports:
+#             - "2080:2080"
+
+# ### Add more Containers below ###############################

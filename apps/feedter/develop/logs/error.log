@@ -1,0 +1,8 @@
+2016/08/29 00:41:48 [alert] 1#1: worker process 7 exited on signal 9
+2016/08/29 00:41:48 [alert] 1#1: worker process 8 exited on signal 9
+2016/08/29 00:41:48 [alert] 1#1: worker process 9 exited on signal 9
+2016/08/29 00:41:48 [alert] 1#1: worker process 10 exited on signal 9
+2016/08/31 00:10:11 [alert] 1#1: worker process 7 exited on signal 9
+2016/08/31 00:10:11 [alert] 1#1: worker process 8 exited on signal 9
+2016/08/31 00:10:11 [alert] 1#1: worker process 9 exited on signal 9
+2016/08/31 00:10:11 [alert] 1#1: worker process 10 exited on signal 9
