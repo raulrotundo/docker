@@ -31,9 +31,9 @@ services:
     data:
         build: ../../../services/data
         volumes:
-            - /var/lib/postgres:/var/lib/postgres
+            #- /var/lib/postgres:/var/lib/postgres
             - /var/lib/redis:/data
-            #- /var/lib/mysql:/var/lib/mysql            
+            - /var/lib/mysql:/var/lib/mysql            
             #- /var/lib/mariadb:/var/lib/mariadb
             #- /var/lib/memcached:/var/lib/memcached            
             #- /var/lib/neo4j:/var/lib/neo4j/data
@@ -55,16 +55,16 @@ services:
 
 ### PostgreSQL Container ####################################
 
-    postgres:
-        build: ../../../services/postgres
-        volumes_from:
-            - data
-        ports:
-            - "5432:5432"
-        environment:
-            POSTGRES_DB: homestead
-            POSTGRES_USER: homestead
-            POSTGRES_PASSWORD: secret
+    # postgres:
+    #     build: ../../../services/postgres
+    #     volumes_from:
+    #         - data
+    #     ports:
+    #         - "5432:5432"
+    #     environment:
+    #         POSTGRES_DB: homestead
+    #         POSTGRES_USER: homestead
+    #         POSTGRES_PASSWORD: secret
 
 ### Redis Container #########################################
 
@@ -85,17 +85,17 @@ services:
 
 # ### MySQL Container #########################################
 
-#     mysql:
-#         build: ../../../services/mysql
-#         volumes_from:
-#             - data
-#         ports:
-#             - "3306:3306"
-#         environment:
-#             MYSQL_DATABASE: homestead
-#             MYSQL_USER: homestead
-#             MYSQL_PASSWORD: secret
-#             MYSQL_ROOT_PASSWORD: root            
+    mysql:
+        build: ../../../services/mysql
+        volumes_from:
+            - data
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: homestead
+            MYSQL_USER: homestead
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: root            
 
 # ### MariaDB Container #######################################
 
